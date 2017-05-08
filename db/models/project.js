@@ -6,6 +6,7 @@ module.exports = db => db.define('projects', {
   title: STRING
 })
 
-module.exports.associations = (Project, {User}) => {
+module.exports.associations = (Project, {User, Container}) => {
   Project.belongsTo(User)
+  Project.hasMany(Container)
 }

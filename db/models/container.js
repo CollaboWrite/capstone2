@@ -15,7 +15,8 @@ module.exports = db => db.define('containers', {
   resources: ARRAY(STRING)
 })
 
-module.exports.associations = (Container, {Project}) => {
+module.exports.associations = (Container, {Project, Blurb}) => {
   Container.belongsTo(Project)
   Container.belongsTo(Container, {as: 'ParentContainer'})
+  Container.hasMany(Blurb)
 }
