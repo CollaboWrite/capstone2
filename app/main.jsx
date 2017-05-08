@@ -10,7 +10,12 @@ import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 
-const ExampleApp = connect(
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './components/Home'
+import Scratchpad from './components/Scratchpad'
+
+/* const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
@@ -20,16 +25,24 @@ const ExampleApp = connect(
       </nav>
       {children}
     </div>
-)
+) */
+
+const App = ({children}) =>
+  <div>
+    <Navbar />
+    {children}
+    <Footer />
+  </div>
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
+      <Route path='/' component={App}>
+        <IndexRedirect to='/home' />
+        <Route path='/home' component={Home} />
+        <Route path='/scratchpad/:title' component={Scratchpad} />
       </Route>
-      <Route path='*' component={NotFound} />
+      <Route path='*' component={NotFound}/>
     </Router>
   </Provider>,
   document.getElementById('main')
