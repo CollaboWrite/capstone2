@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default (props) =>
-  <div className='toolbar'>
+  <nav className='toolbar navbar'>
     <h3>Project Name</h3>
     <button>Something</button>
     <button>Else</button>
@@ -13,4 +13,4 @@ export default (props) =>
         <option>Project 3</option>
       </select>
     </form>
-  </div>
+  </nav>

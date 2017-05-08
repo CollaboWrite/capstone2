@@ -22,7 +22,8 @@ export default class extends React.Component {
   }
 
   handleImageUpload(file) {
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+
+    const upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file)
 
@@ -41,14 +42,18 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Uploads</h3>
-        <Dropzone
-            multiple={false}
-            accept='*'
-            onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
-          </Dropzone>
+      <div className='panel panel-primary'>
+        <div className='panel-heading'>
+          <h3>Uploads</h3>
+        </div>
+        <div className='panel-body'>
+          <Dropzone
+              multiple={false}
+              accept='image/*'
+              onDrop={this.onImageDrop.bind(this)}>
+              <p>Drop an image or click to select a file to upload.</p>
+            </Dropzone>
+          </div>
       </div>
     )
   }

@@ -5,7 +5,8 @@ import Binder from '../components/Binder'
 import Uploads from '../components/Uploads'
 import Trashcan from '../components/Trashcan'
 
-import Editor from '../components/Editor'
+import EditorContainer from '../containers/EditorContainer'
+import BinderContainer from '../containers/BinderContainer'
 
 import Summary from '../components/Summary'
 import Notes from '../components/Notes'
@@ -19,12 +20,12 @@ export default class extends React.Component {
           <Toolbar />
         </div>
         <div className='col-lg-3 sidebar-right'>
-          <Binder />
+          <BinderContainer />
           <Uploads />
           <Trashcan />
         </div>
         <div className='col-lg-6 project-center'>
-          <Editor />
+          <EditorContainer />
         </div>
         <div className='col-lg-3 sidebar-left'>
           <Summary />
