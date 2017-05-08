@@ -8,7 +8,6 @@ import Trashcan from '../components/Trashcan'
 import EditorContainer from '../containers/EditorContainer'
 import BinderContainer from '../containers/BinderContainer'
 
-
 import Summary from '../components/Summary'
 import Notes from '../components/Notes'
 import Resources from '../components/Resources'

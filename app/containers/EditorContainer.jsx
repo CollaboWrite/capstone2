@@ -7,6 +7,3 @@ const mapStateToProps = null
 const mapDispatchToProps = {createBlurb}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor)
-
-
-

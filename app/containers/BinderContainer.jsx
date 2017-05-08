@@ -7,6 +7,3 @@ const mapStateToProps = null
 const mapDispatchToProps = {createContainer}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Binder)
-
-
-
