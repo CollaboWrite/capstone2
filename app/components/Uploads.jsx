@@ -22,6 +22,7 @@ export default class extends React.Component {
   }
 
   handleImageUpload(file) {
+
     const upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file)
