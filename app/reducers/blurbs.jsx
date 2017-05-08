@@ -16,13 +16,13 @@ export const stockBlurb = blurb => ({
 export const createBlurb = (blurb) =>
   dispatch =>
     axios.post('/api/blurbs/', blurb)
-      .then((blurb) => dispatch(stockBlurb(blurb)))
+      .then((blurb) => dispatch(stockBlurb(blurb.data)))
       .catch(err => console.error(err))
 
 export const updateBlurb = (blurb) =>
   dispatch =>
     axios.put(`/api/blurbs/${blurb.id}`, blurb)
-      .then((blurb) => dispatch(stockBlurb(blurb)))
+      .then((blurb) => dispatch(stockBlurb(blurb.data)))
       .catch(err => console.error(err))
 
 export default reducer
