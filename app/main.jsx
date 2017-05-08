@@ -15,6 +15,8 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Scratchpad from './components/Scratchpad'
 
+import AppContainer from './containers/AppContainer'
+
 /* const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
@@ -29,9 +31,7 @@ import Scratchpad from './components/Scratchpad'
 
 const App = ({children}) =>
   <div>
-    <Navbar />
     {children}
-    <Footer />
   </div>
 
 render(
@@ -41,6 +41,7 @@ render(
         <IndexRedirect to='/home' />
         <Route path='/home' component={Home} />
         <Route path='/scratchpad/:title' component={Scratchpad} />
+        <Route path='/project' component={AppContainer} />
       </Route>
       <Route path='*' component={NotFound}/>
     </Router>
