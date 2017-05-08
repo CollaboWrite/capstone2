@@ -12,10 +12,6 @@ import Notes from '../components/Notes'
 import Resources from '../components/Resources'
 
 export default class extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div>
