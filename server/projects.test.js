@@ -67,4 +67,15 @@ describe('/api/projects', () => {
         })
     )
   })
+
+  describe('POST /', () => {
+    it('returns the new project', () =>
+      request(app)
+        .post('/api/projects')
+        .send({title: 'new project!'})
+        .then(res => {
+          expect(res.body.title).to.equal('new project!')
+        })
+    )
+  })
 })

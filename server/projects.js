@@ -16,6 +16,8 @@ module.exports = require('express').Router()
     .catch(next)
   )
   // fetches all containers/blurbs for the selected project
+  // in order to fetch nested containers within container,
+  // look into NPM sequelize-hierarchy
   .get('/:projectId', (req, res, next) =>
     Project.findOne({
       where: {
@@ -31,3 +33,10 @@ module.exports = require('express').Router()
     .then(project => res.send(project))
     .catch(next)
   )
+  .post('/', (req, res, next) => {
+    Project.create(req.body)
+    .then(project => {
+      res.send(project)
+    })
+    .catch(next)
+  })
