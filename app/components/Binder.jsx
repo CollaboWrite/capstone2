@@ -22,6 +22,8 @@ export default class extends React.Component {
   }
 
   render() {
+    const selectedProject = this.props.selectedProject
+    console.log('SELECTED PROJECT', selectedProject)
     return (
       <div className='panel panel-info'>
         <div className='panel-heading'>
