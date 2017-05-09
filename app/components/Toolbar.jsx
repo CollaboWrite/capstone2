@@ -1,16 +1,23 @@
 import React from 'react'
 
-export default (props) =>
+const Toolbar = (props) =>
   <nav className='toolbar navbar'>
-    <h3>Project Name</h3>
+    <select onChange={(evt) => {
+      console.log(evt.target.value)
+      props.fetchProject(evt.target.value)
+    }
+    }>
+      {
+        props.projects && props.projects.map(project => (
+          <option value={project.id} key={project.id}>{project.title}</option>
+        )
+        )
+      }
+    </select>
     <button>Something</button>
     <button>Else</button>
     <button>Here</button>
-    <form>
-      <select>
-        <option>Project 1</option>
-        <option>Project 2</option>
-        <option>Project 3</option>
-      </select>
-    </form>
+
   </nav>
+
+export default Toolbar

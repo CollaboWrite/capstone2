@@ -22,6 +22,7 @@ export default class extends React.Component {
   }
 
   render() {
+    const containers = this.props.selectedProject.containers
     return (
       <div className='panel panel-info'>
         <div className='panel-heading'>
@@ -29,10 +30,9 @@ export default class extends React.Component {
         </div>
         <div className='panel-body'>
           <ul>
-            <li>Chapter 1</li>
-            <li>Chapter 2</li>
-            <li>Chapter 3</li>
-            <li>Chapter 4</li>
+            {
+              containers && containers.map(container => <li key={container.id}>{container.title}</li>)
+            }
           </ul>
           <form onSubmit={this.handleSubmit}>
             <div>
