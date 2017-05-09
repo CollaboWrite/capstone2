@@ -1,9 +1,8 @@
 import {connect} from 'react-redux'
 import Editor from '../components/Editor'
-import {createBlurb} from '../reducers/blurbs'
 
-const mapStateToProps = (state) => ({item: state.projects.item})
+const mapStateToProps = (state) => ({item: state.items.selected})
 
-const mapDispatchToProps = {createBlurb}
+const mapDispatchToProps = null
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor)

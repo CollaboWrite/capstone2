@@ -1,8 +1,9 @@
 'use strict'
 
+// potentially bring in npm sequelize-hierarchy here
 const {TEXT, STRING, ENUM, ARRAY} = require('sequelize')
 
-module.exports = db => db.define('containers', {
+module.exports = db => db.define('items', {
   title: STRING,
   summary: STRING,
   label: ARRAY(STRING),
@@ -12,11 +13,11 @@ module.exports = db => db.define('containers', {
   },
   text: TEXT,
   notes: TEXT,
-  resources: ARRAY(STRING)
+  resources: ARRAY(STRING),
+  type: ENUM('folder', 'blurb')
 })
 
-module.exports.associations = (Container, {Project, Blurb}) => {
-  Container.belongsTo(Project)
-  Container.belongsTo(Container, {as: 'ParentContainer'})
-  Container.hasMany(Blurb)
+module.exports.associations = (Item, {Project}) => {
+  Item.belongsTo(Project)
+  Item.belongsTo(Item, {as: 'ParentItem'})
 }

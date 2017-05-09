@@ -2,9 +2,7 @@
 
 const db = require('APP/db')
 const Project = db.model('projects')
-const Container = db.model('containers')
-const Blurb = db.model('blurbs')
-
+const Item = db.model('items')
 
 module.exports = require('express').Router()
   // fetches all projects for drop down
@@ -15,20 +13,14 @@ module.exports = require('express').Router()
     })
     .catch(next)
   )
-  // fetches all containers/blurbs for the selected project
-  // in order to fetch nested containers within container,
-  // look into NPM sequelize-hierarchy
+  // fetches the selected project and its first level of items
+  // in order to fetch nested items within item, look into NPM sequelize-hierarchy
   .get('/:projectId', (req, res, next) =>
     Project.findOne({
       where: {
         id: req.params.projectId
       },
-      include: [{
-        model: Container,
-        include: [{
-          model: Blurb
-        }]
-      }]
+      include: [{model: Item}]
     })
     .then(project => res.send(project))
     .catch(next)
