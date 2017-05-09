@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactQuill from 'react-quill'
 
 export default class extends React.Component {
   constructor(props) {
@@ -10,29 +11,32 @@ export default class extends React.Component {
     this.saveBlurb = this.saveBlurb.bind(this)
   }
 
-  write(evt) {
-    evt.preventDefault()
+  write(html) {
     this.setState({
-      value: evt.target.value
+      value: html
     })
   }
 
   saveBlurb(evt) {
     evt.preventDefault()
-    this.props.createBlurb({text: this.state.value})
+    this.props.updateBlurb({
+      id: this.props.item.id,
+      text: this.state.value
+    })
   }
 
   render() {
     return (
-      <div>
-        <h3>Editor</h3>
-        <textarea
-          className='scratchpad'
-          rows={10}
-          cols={80}
-          value={this.state.value}
-          onChange={this.write} />
+      <div className="container">
+        <div>
+        <ReactQuill id='react-quill'
+                  value={this.state.value}
+                  onChange={this.write}
+                  theme={'snow'}/>
+        </div>
+        <div>
         <button onClick={this.saveBlurb}>Save Blurb</button>
+        </div>
       </div>
     )
   }
