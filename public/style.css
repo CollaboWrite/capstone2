@@ -7,7 +7,6 @@
 .project-center {
     display: inline-block !important;
     width: 50vw;
-    background-color: #b0b8c4;
     vertical-align: top;
 }
 
@@ -23,4 +22,9 @@
 .toolbar button {
     margin-left: 5vw;
     margin-right: 5vw;
+}
+
+#react-quill {
+    height: 80vh;
+    width: 45vw;
 }
