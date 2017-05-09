@@ -16,15 +16,6 @@ export default (props) =>
        />
       <form>
         <div>
-          <label>Label</label>
-          <select>
-            <option></option>
-            {
-              props.item.label && props.item.label.map(label => <option key={label}>{label}</option>)
-            }
-          </select>
-        </div>
-        <div>
           <label>Status</label>
           <select>
             {
