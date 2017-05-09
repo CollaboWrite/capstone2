@@ -1,29 +1,39 @@
 import React from 'react'
 
+const statusOptions = ['To Do', 'First Draft', 'Revised Draft', 'Final Draft']
+
 export default (props) =>
   <div className="panel panel-warning">
     <div className="panel-heading">
       <h3>Summary</h3>
     </div>
     <div className="panel-body">
-      <p>This is a summary of the thing we are looking at</p>
+      <textarea
+          className='scratchpad'
+          rows={4}
+          cols={40}
+          value={props.item.summary}
+       />
       <form>
         <div>
           <label>Label</label>
           <select>
             <option></option>
-            <option>Main</option>
-            <option>New York</option>
-            <option>Add new label</option>
+            {
+              props.item.label && props.item.label.map(label => <option key={label}>{label}</option>)
+            }
           </select>
         </div>
         <div>
           <label>Status</label>
           <select>
-            <option></option>
-            <option>Draft 1</option>
-            <option>Draft 2</option>
-            <option>Final Draft</option>
+            {
+              statusOptions.map(status =>
+                status === props.item.status
+                ? (<option key={status} selected>{status}</option>)
+                : (<option key={status}>{status}</option>)
+              )
+            }
           </select>
         </div>
       </form>
