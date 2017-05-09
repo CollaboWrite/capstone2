@@ -5,8 +5,8 @@ import ToolbarContainer from '../containers/ToolbarContainer'
 import BinderContainer from '../containers/BinderContainer'
 import Trashcan from '../components/Trashcan'
 import EditorContainer from '../containers/EditorContainer'
-import Summary from '../components/Summary'
 import NotesContainer from '../containers/NotesContainer'
+import SummaryContainer from '../containers/SummaryContainer'
 import Resources from '../components/Resources'
 
 export default class AppContainer extends React.Component {
@@ -24,8 +24,8 @@ export default class AppContainer extends React.Component {
           <EditorContainer />
         </div>
         <div className='col-lg-3 sidebar-left'>
-          <Summary />
           <NotesContainer />
+          <SummaryContainer />
           <Resources />
         </div>
       </div>
