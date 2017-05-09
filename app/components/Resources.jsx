@@ -9,8 +9,12 @@ export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      uploadedFileCloudinaryUrl: ''
+      url: ''
     }
+    this.onImageDrop = this.onImageDrop.bind(this)
+    this.handleImageUpload = this.handleImageUpload.bind(this)
+    this.handleUrl = this.handleUrl.bind(this)
+    this.submitUrl = this.submitUrl.bind(this)
   }
 
   onImageDrop(files) {
@@ -32,9 +36,21 @@ export default class extends React.Component {
 
       if (response.body.secure_url !== '') {
         this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
+          url: response.body.secure_url
         })
       }
+    })
+  }
+  handleUrl(evt) {
+    evt.preventDefault()
+    this.setState({
+      url: evt.target.value
+    })
+  }
+  submitUrl(evt) {
+    evt.preventDefault()
+    this.props.updateBlurb({
+      resources: this.props.item.resources.push(this.state.url)
     })
   }
   render() {
@@ -45,19 +61,15 @@ export default class extends React.Component {
         </div>
         <div className='panel-body'>
           <ul>
-            <li>Google: Google.com</li>
-            <li>Bing: Bing.com</li>
-            <li>Wiki: Wikipedia.com</li>
+          {this.props.item.resources && this.props.item.resources.map((resource, indx) => (
+            <li key={indx}>{resource}</li>)
+          )}
           </ul>
           <h4>Add a new resource</h4>
-          <form>
-            <div>
-              <label>Title:</label>
-              <input type='text' />
-            </div>
+          <form onSubmit={this.submitUrl}>
             <div>
               <label>Url:</label>
-              <input type='text' />
+              <input type='text' onChange={this.handleUrl}/>
             </div>
             <button type='submit'>Add Resource</button>
           </form>

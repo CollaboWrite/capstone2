@@ -13,7 +13,8 @@ module.exports = db => db.define('blurbs', {
   text: TEXT,
   notes: TEXT,
   resources: ARRAY(STRING)
-})
+}
+)
 
 module.exports.associations = (Blurb, {Container}) => {
   Blurb.belongsTo(Container)
