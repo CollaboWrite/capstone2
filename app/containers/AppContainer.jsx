@@ -7,7 +7,7 @@ import Trashcan from '../components/Trashcan'
 import EditorContainer from '../containers/EditorContainer'
 import NotesContainer from '../containers/NotesContainer'
 import SummaryContainer from '../containers/SummaryContainer'
-import Resources from '../components/Resources'
+import ResourcesContainer from '../containers/ResourcesContainer'
 
 export default class AppContainer extends React.Component {
   render() {
@@ -26,7 +26,7 @@ export default class AppContainer extends React.Component {
         <div className='col-lg-3 sidebar-left'>
           <NotesContainer />
           <SummaryContainer />
-          <Resources />
+          <ResourcesContainer />
         </div>
       </div>
     )
