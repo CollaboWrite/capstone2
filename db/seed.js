@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Project, Container, Blurb, Promise } = db,
+    { User, Project, Item, Promise } = db,
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -10,8 +10,8 @@ function seedEverything() {
     }
 
     seeded.projects = projects(seeded)
-    seeded.containers = containers(seeded)
-    seeded.blurbs = blurbs(seeded)
+    seeded.items = items(seeded)
+    seeded.nestedItems = nestedItems(seeded)
 
     return Promise.props(seeded)
 }
@@ -30,21 +30,20 @@ const users = seed(User, {
 })
 
 const projects = seed(Project, ({ users }) => ({
-    surfing: { title: 'surfing', user_id: users.god.id },
-    smiting: { title: 'smiting', user_id: users.god.id },
-    puppies: { title: 'puppies', user_id: users.barack.id },
+    novel: { title: 'My First Novel', user_id: users.god.id },
+    thesis: { title: 'Graduate Thesis', user_id: users.god.id }
 }))
 
-const containers = seed(Container, ({ projects }) => ({
-    chapter1: { title: 'Chapter 1', summary: 'There was once a very hot day', label: ['thing 1', 'thing 2', 'thing 3'], status: 'First Draft', text: 'Something happens in chapter 1', notes: 'Things happen during this chapter', resources: ['google', 'wikipedia', 'bing'], project_id: projects.surfing.id },
-    chapter2: { title: 'Chapter 2', summary: 'There was once a wet day', label: ['object 1', 'object 2', 'object 3'], status: 'First Draft', text: 'Something happens in chapter 2', notes: 'Things dont happen during this chapter', resources: ['new york times'], project_id: projects.surfing.id },
+const items = seed(Item, ({ projects }) => ({
+    chapter1: { title: 'Chapter 1', summary: 'There was once a very hot day', label: ['thing 1', 'thing 2', 'thing 3'], status: 'First Draft', text: 'Something happens in chapter 1', notes: 'Things happen during this chapter', resources: ['google', 'wikipedia', 'bing'], project_id: projects.novel.id, type: 'folder' },
+    chapter2: { title: 'Chapter 2', summary: 'There was once a wet day', label: ['object 1', 'object 2', 'object 3'], status: 'First Draft', text: 'Something happens in chapter 2', notes: 'Things dont happen during this chapter', resources: ['new york times'], project_id: projects.novel.id, type: 'folder' }
 }))
 
-const blurbs = seed(Blurb, ({ containers }) => ({
-    morning: { title: 'Early Morning', summary: 'There was a morning and there was an ocean', label: ['water'], status: 'To Do', text: 'Something and something and waves and it sucks', notes: 'Surfing is the worst', resources: ['surfing.com'], container_id: containers.chapter1.id },
-    afternoon: { title: 'Mid Afternoon', summary: 'We went to eat some pizza', label: ['food', 'pizza'], status: 'To Do', text: 'Pizza is delicious', notes: 'Yumm', resources: ['ChuckeeCheese.com'], container_id: containers.chapter1.id },
-    night: { title: 'Nighttime', summary: 'Naps', label: ['sleeping'], status: 'To Do', text: 'I was tired so I took a nap', notes: 'Cuddling with my cat', resources: ['netflix.com'], container_id: containers.chapter1.id },
-    midnight: { title: 'Midnight', summary: 'Late at night I wanted a snack', label: ['snacktime', 'midnight snack'], status: 'To Do', text: 'I was hungry and remembered I had icecream in the freezer. Yum, I like ice cream but now I have a sugar rush.', notes: 'Ice cream is the best', resources: ['benandjerries.com'], container_id: containers.chapter1.id }
+const nestedItems = seed(Item, ({ items }) => ({
+    scene: { title: 'Early Morning', summary: 'There was a morning and there was an ocean', label: ['water'], status: 'To Do', text: 'Something and something and waves and it sucks', notes: 'Surfing is the worst', resources: ['surfing.com'], parent_item_id: items.chapter1.id, type: 'blurb'},
+    scene2: { title: 'Mid Afternoon', summary: 'We went to eat some pizza', label: ['food', 'pizza'], status: 'To Do', text: 'Pizza is delicious', notes: 'Yumm', resources: ['ChuckeeCheese.com'], parent_item_id: items.chapter1.id, type: 'blurb'},
+    night: { title: 'Nighttime', summary: 'Naps', label: ['sleeping'], status: 'To Do', text: 'I was tired so I took a nap', notes: 'Cuddling with my cat', resources: ['netflix.com'], parent_item_id: items.chapter2.id, type: 'blurb'},
+    midnight: { title: 'Midnight', summary: 'Late at night I wanted a snack', label: ['snacktime', 'midnight snack'], status: 'To Do', text: 'I was hungry and remembered I had icecream in the freezer. Yum, I like ice cream but now I have a sugar rush.', notes: 'Ice cream is the best', resources: ['benandjerries.com'], parent_item_id: items.chapter2.id, type: 'blurb'}
 }))
 
 if (module === require.main) {
@@ -115,4 +114,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { users, projects, containers })
+module.exports = Object.assign(seed, { users, projects, items })
