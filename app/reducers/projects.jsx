@@ -29,7 +29,7 @@ export const stockProjects = projects => ({
 
 const STOCK_PROJECT = 'STOCK_PROJECT'
 export const stockProject = project => ({
-    type: STOCK_PROJECT, project
+    type: STOCK_PROJECT, project 
 })
 
 const STOCK_ITEM = 'STOCK_ITEM'

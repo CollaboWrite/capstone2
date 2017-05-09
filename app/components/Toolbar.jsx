@@ -3,7 +3,6 @@ import React from 'react'
 const Toolbar = (props) =>
   <nav className='toolbar navbar'>
     <select onChange={(evt) => {
-      console.log(evt.target.value)
       props.fetchProject(evt.target.value)
     }
     }>

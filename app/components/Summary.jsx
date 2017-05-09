@@ -12,7 +12,7 @@ export default (props) =>
           className='scratchpad'
           rows={4}
           cols={40}
-          value={props.summary}
+          value={props.item.summary}
        />
       <form>
         <div>
@@ -20,7 +20,7 @@ export default (props) =>
           <select>
             <option></option>
             {
-              props.label && props.label.map(label => <option key={label}>{label}</option>)
+              props.item.label && props.item.label.map(label => <option key={label}>{label}</option>)
             }
           </select>
         </div>
@@ -28,11 +28,11 @@ export default (props) =>
           <label>Status</label>
           <select>
             {
-              statusOptions.map(status => {
-                status === props.status
-                ? (<option selected>{status}</option>)
-                : (<option>{status}</option>)
-              })
+              statusOptions.map(status =>
+                status === props.item.status
+                ? (<option key={status} selected>{status}</option>)
+                : (<option key={status}>{status}</option>)
+              )
             }
           </select>
         </div>
