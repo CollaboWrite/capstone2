@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 
 import ToolbarContainer from '../containers/ToolbarContainer'
 import BinderContainer from '../containers/BinderContainer'
-import Uploads from '../components/Uploads'
 import Trashcan from '../components/Trashcan'
 import EditorContainer from '../containers/EditorContainer'
 import Summary from '../components/Summary'
@@ -19,7 +18,6 @@ export default class AppContainer extends React.Component {
         </div>
         <div className='col-lg-3 sidebar-right'>
           <BinderContainer />
-          <Uploads />
           <Trashcan />
         </div>
         <div className='col-lg-6 project-center'>
