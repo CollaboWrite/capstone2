@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import Resources from '../components/Resources'
-import {updateBlurb} from '../reducers/blurbs'
+import {updateItem} from '../reducers/items'
 
-const mapStateToProps = (state) => ({ item: state.projects.item })
+const mapStateToProps = (state) => ({ item: state.items.selected })
 
-const mapDispatchToProps = {updateBlurb}
+const mapDispatchToProps = {updateItem}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Resources)

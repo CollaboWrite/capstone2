@@ -19,7 +19,7 @@ export default class extends React.Component {
 
   saveBlurb(evt) {
     evt.preventDefault()
-    this.props.updateBlurb({
+    this.props.updateItem({
       id: this.props.item.id,
       text: this.state.value
     })

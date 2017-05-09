@@ -41,10 +41,10 @@ export const selectItem = (itemId) =>
 //       .then((item) => dispatch(stockItems(item.data)))
 //       .catch(err => console.error(err))
 
-// export const updateitem = (item) =>
-//   dispatch =>
-//     axios.put(`/api/items/${item.id}`, item)
-//       .then((item) => dispatch(stockItems(item.data)))
-//       .catch(err => console.error(err))
+export const updateItem = (item) =>
+  dispatch =>
+    axios.put(`/api/items/${item.id}`, item)
+      .then((item) => dispatch(stockItems(item.data)))
+      .catch(err => console.error(err))
 
 export default reducer

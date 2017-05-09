@@ -49,7 +49,7 @@ export default class extends React.Component {
   }
   submitUrl(evt) {
     evt.preventDefault()
-    this.props.updateBlurb({
+    this.props.updateItem({
       resources: this.props.item.resources.push(this.state.url)
     })
   }
@@ -61,7 +61,7 @@ export default class extends React.Component {
         </div>
         <div className='panel-body'>
           <ul>
-          {this.props.item.resources && this.props.item.resources.map((resource, indx) => (
+          {this.props.item && this.props.item.resources.map((resource, indx) => (
             <li key={indx}>{resource}</li>)
           )}
           </ul>
