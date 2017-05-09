@@ -6,7 +6,7 @@ import BinderContainer from '../containers/BinderContainer'
 import Trashcan from '../components/Trashcan'
 import EditorContainer from '../containers/EditorContainer'
 import Summary from '../components/Summary'
-import Notes from '../components/Notes'
+import NotesContainer from '../containers/NotesContainer'
 import Resources from '../components/Resources'
 
 export default class AppContainer extends React.Component {
@@ -25,7 +25,7 @@ export default class AppContainer extends React.Component {
         </div>
         <div className='col-lg-3 sidebar-left'>
           <Summary />
-          <Notes />
+          <NotesContainer />
           <Resources />
         </div>
       </div>
