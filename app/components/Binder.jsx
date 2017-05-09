@@ -9,6 +9,7 @@ export default class extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleChange(evt) {
@@ -21,6 +22,11 @@ export default class extends React.Component {
     this.props.createContainer({ title: this.state.newContainer })
   }
 
+  handleSelect(evt) {
+    evt.preventDefault()
+    this.props.selectItem(evt.target.value)
+  }
+
   render() {
     const containers = this.props.selectedProject.containers
     return (
@@ -31,7 +37,7 @@ export default class extends React.Component {
         <div className='panel-body'>
           <ul>
             {
-              containers && containers.map(container => <li key={container.id}>{container.title}</li>)
+              containers && containers.map(container => <li key={container.id} value={container.id} onClick={this.handleSelect}>{container.title}</li>)
             }
           </ul>
           <form onSubmit={this.handleSubmit}>
