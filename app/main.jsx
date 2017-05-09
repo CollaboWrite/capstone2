@@ -28,8 +28,7 @@ import { fetchProjects } from './reducers/projects'
 ) */
 
 const onAppEnter = () => {
-  const allProjects = axios.get('/api/projects')
-    .then(res => store.dispatch(fetchProjects(res.data)))
+  store.dispatch(fetchProjects())
 }
 
 render(

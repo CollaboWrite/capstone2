@@ -6,8 +6,7 @@ api
   .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
-  .use('/blurbs', require('./blurbs'))
-  .use('/containers', require('./containers'))
+  .use('/items', require('./items'))
   .use('/projects', require('./projects'))
 
 

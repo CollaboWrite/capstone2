@@ -6,10 +6,18 @@ export default (props) =>
       <h3>Notes</h3>
     </div>
     <div className="panel-body">
-      <textarea
-        rows={4}
-        cols={40}
-        value={props.item.notes}
-      />
+      {
+        props.item
+          ? <textarea
+            rows={4}
+            cols={40}
+            value={props.item.notes}
+          />
+          : <textarea
+            rows={4}
+            cols={40}
+          />
+      }
+
     </div>
   </div>

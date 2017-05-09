@@ -1,8 +1,7 @@
 import axios from 'axios'
 const initialState = {
     list: [],
-    selected: {},
-    item: {}
+    selected: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,9 +12,6 @@ const reducer = (state = initialState, action) => {
             break
         case STOCK_PROJECT:
             newState.selected = action.project
-            break
-        case STOCK_ITEM:
-            newState.item = action.item
             break
     }
 
@@ -32,18 +28,7 @@ export const stockProject = project => ({
     type: STOCK_PROJECT, project 
 })
 
-const STOCK_ITEM = 'STOCK_ITEM'
-export const stockItem = item => ({
-    type: STOCK_ITEM, item
-})
-
-export const selectItem = (itemId) =>
-    dispatch =>
-        axios.get(`/api/containers/${itemId}`)
-            .then(item => dispatch(stockItem(item.data)))
-            .catch(err => console.error(err))
-
-export const fetchProjects = (projects) =>
+export const fetchProjects = () =>
     dispatch =>
         axios.get('/api/projects/')
             .then((projects) => dispatch(stockProjects(projects.data)))
