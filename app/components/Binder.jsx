@@ -24,6 +24,7 @@ export default class extends React.Component {
 
   handleSelect(evt) {
     evt.preventDefault()
+    this.props.selectItem(evt.target.value)
   }
 
   render() {
